@@ -6,13 +6,13 @@ const PORT =8093
 const courses=[
     {
         "name":"standard-10",
-        "fees":"5400",
-        "duration":"10 months"
+        "duration":"10 months",
+
     },
     {
         "name":"standard-12",
-        "fees":"6600",
-        "duration":"12 months"
+        "duration":"12 months",
+        
     },
 ]
 app.get('/',(req,res)=>{
