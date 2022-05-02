@@ -1,26 +1,13 @@
 const express=require('express')
 const cors=require('cors')
+const dotenv=require('dotenv')
+const defaultRoute=require('./comps/default')
+const coursesRoute=require('./comps/courses')
 const app=express()
+dotenv.config()
 app.use(cors())
-const PORT =8093
-const courses=[
-    {
-        "name":"standard-10",
-        "duration":"10 months",
-
-    },
-    {
-        "name":"standard-12",
-        "duration":"12 months",
-        
-    },
-]
-app.get('/',(req,res)=>{
-    res.send("hello world")
-})
-app.get('/courses',(req,res)=>{
-    res.send(courses);
-})
+app.get('/',defaultRoute.route)
+app.get('/courses',coursesRoute.route)
 app.listen(process.env.PORT,()=>{
-    console.log("shreepad shree vallabh is blessing you on port "+PORT)
+    console.log("shreepad shree vallabh is blessing you on port "+process.env.PORT)
 })
