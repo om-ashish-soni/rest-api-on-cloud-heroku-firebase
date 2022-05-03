@@ -12,7 +12,10 @@ const readStreamRoute=(req,res)=>{
         try {
             const data = await collectionData.find().toArray();
             console.log(data);
-            res.json(data);
+            res.json({
+                "total_number_of_data":data.length,
+                "data":data
+            });
         } catch (e) {
             res.json({message: e});
         }
