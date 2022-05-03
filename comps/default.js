@@ -1,4 +1,4 @@
 const defaultRoute=(req,res)=>{
-    res.send("hello from xyz clone")
+    res.send("apply /mongo to connect and retrieve streams")
 }
 exports.route=defaultRoute;
