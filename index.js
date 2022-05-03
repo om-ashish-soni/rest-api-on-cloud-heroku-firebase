@@ -1,16 +1,20 @@
 const express=require('express')
 const cors=require('cors')
 const dotenv=require('dotenv')
-
+const bodyParser=require('body-parser')
 const app=express()
 const readStreamRoute=require('./mongo/readStreams')
+const addStreamRoute=require('./mongo/addStream')
+const deleteStreamRoute=require('./mongo/deleteStream')
 const defaultRoute=require('./comps/default')
-
 dotenv.config()
 app.use(cors())
-
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.get('/',defaultRoute.route)
-app.get('/mongo',readStreamRoute.route)
+app.get('/readStreams',readStreamRoute.route)
+app.post('/addStream',addStreamRoute.route)
+app.post('/deleteStream',deleteStreamRoute.route)
 app.listen(process.env.PORT,()=>{
     console.log("shreepad shree vallabh is blessing you on port "+process.env.PORT)
 })
