@@ -11,5 +11,12 @@ const marksheetSchema=new mongoose.Schema({
     phy:Number,
     chem:Number
 })
+const resultSchema=new mongoose.Schema({
+    resultId:Number,
+    maths:Number,
+    phy:Number,
+    chem:Number
+})
 exports.studentSchema=studentSchema
 exports.marksheetSchema=marksheetSchema
+exports.resultSchema=resultSchema

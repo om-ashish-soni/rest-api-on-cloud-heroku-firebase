@@ -6,12 +6,18 @@ const getStudentsRoute=async (req,res)=>{
     connect(DATABASE);
     
     const users=await Student.aggregate([{
+        // $lookup: {
+        //     from: "marksheets", // collection name in db
+        //     localField: "marksheetId",
+        //     foreignField: "marksheetId",
+        //     as: "marksheet"
+        // },
         $lookup: {
-            from: "marksheets", // collection name in db
+            from: "results", // collection name in db
             localField: "marksheetId",
-            foreignField: "marksheetId",
-            as: "marksheet"
-        }
+            foreignField: "resultId",
+            as: "result"
+        },
     }])
     res.json(users);
 }

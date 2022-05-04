@@ -1,5 +1,7 @@
+// imports section
 const express=require('express')
 const cors=require('cors')
+const cron=require('node-cron')
 const dotenv=require('dotenv')
 const bodyParser=require('body-parser')
 const app=express()
@@ -14,11 +16,22 @@ const ageFormationRoute=require('./students/ageFormation')
 const sortByAgeRoute=require('./students/sortByAge')
 const distinctStudentsRoute=require('./students/distinctStudents')
 const addMarksheetRoute=require('./marksheets/addMarksheet')
+const cronJob=require('./results/collectResults')
 const defaultRoute=require('./comps/default')
+
+//cron jobs 
+cron.schedule('0 0 0 * * *', () => {
+    console.log('running every midnight at 12 am');
+    cronJob.manipulate();
+});
+
+//configs
 dotenv.config()
 app.use(cors())
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+//request mappings 
 app.get('/',defaultRoute.route)
 app.get('/readStreams',readStreamRoute.route)
 app.post('/addStream',addStreamRoute.route)
