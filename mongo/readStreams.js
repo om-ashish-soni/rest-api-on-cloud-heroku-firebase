@@ -8,10 +8,12 @@ const readStreamRoute=(req,res)=>{
         }
         console.log("Connected to the DB!");
         const collectionData = client.db("jobportal").collection("streams");
-
+        
         try {
             const data = await collectionData.find().toArray();
+            
             console.log(data);
+            
             res.json({
                 "total_number_of_data":data.length,
                 "data":data
