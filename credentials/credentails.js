@@ -1,0 +1,2 @@
+const ADMIN_KEY="1234";
+exports.ADMIN_KEY=ADMIN_KEY;
