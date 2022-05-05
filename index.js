@@ -18,6 +18,8 @@ const distinctStudentsRoute=require('./students/distinctStudents')
 const addMarksheetRoute=require('./marksheets/addMarksheet')
 const cronJob=require('./results/collectResults')
 const defaultRoute=require('./comps/default')
+const authJWTRoute=require('./jwt/authJWTRoute')
+const {authJWTMiddleware}=require('./jwt/authJWTMiddleware')
 const {middleware,authMiddleware}=require('./middleware/middleware')
 //cron jobs 
 cron.schedule('0 0 0 * * *', () => {
@@ -39,12 +41,13 @@ app.post('/addStream',addStreamRoute.route)
 app.delete('/deleteStream',deleteStreamRoute.route)
 app.put('/updateStream',updateStreamRoute.route)
 app.get('/aggregateStream',aggregateStreamRoute.route)
-app.get('/getStudents',authMiddleware,getStudentsRoute.route)
+app.get('/getStudents',authMiddleware,authJWTMiddleware,getStudentsRoute.route)
 app.post('/addStudent',addStudentRoute.route)
 app.get('/ageFormation',ageFormationRoute.route)
 app.get('/sortByAge',sortByAgeRoute.route)
 app.get('/distinctStudents',distinctStudentsRoute.route)
 app.post('/addMarksheet',addMarksheetRoute.route)
+app.post('/login',authJWTRoute.route)
 // app.get('/getMarksheets',getMarksheets.route)
 
 app.listen(process.env.PORT,()=>{
