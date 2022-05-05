@@ -3,6 +3,7 @@ const {Student} = require('../mongoCompass/models');
 const {connect} = require('../mongoCompass/connect')
 const {DATABASE} = require('../mongoCompass/config')
 const getStudentsRoute=async (req,res)=>{
+    console.log("req.admin : ",req.admin)
     connect(DATABASE);
     // const users=await Student.find()
     const users=await Student.aggregate([

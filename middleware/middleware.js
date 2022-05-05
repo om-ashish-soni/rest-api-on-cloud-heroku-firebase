@@ -1,6 +1,6 @@
 const {authMiddleware}=require('./authMiddleware')
 const middleware=(req,res,next)=>{
-    console.log("this is middle ware modified and structured")
+    console.log(`${req.method} request to ${req.originalUrl}`)
     next()
 }
 exports.middleware=middleware
