@@ -14,7 +14,7 @@ const authJWTMiddleware=(req,res,next)=>{
         if(err){
             res.status(403)
             return res.json({
-                "error":"unauthorized access jwt token not found"
+                "error":"unauthorized access jwt token not found,get token again"
             })
         }
         // result = ....some operations

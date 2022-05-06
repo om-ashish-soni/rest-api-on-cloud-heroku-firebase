@@ -56,6 +56,13 @@ const resultSchema=new mongoose.Schema({
         max:100
     }
 })
+const tokenSchema=new mongoose.Schema({
+    token:{
+        type:String,
+        required:true
+    },
+})
 exports.studentSchema=studentSchema
 exports.marksheetSchema=marksheetSchema
 exports.resultSchema=resultSchema
+exports.tokenSchema=tokenSchema

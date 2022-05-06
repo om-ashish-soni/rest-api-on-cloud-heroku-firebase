@@ -19,6 +19,8 @@ const addMarksheetRoute=require('./marksheets/addMarksheet')
 const cronJob=require('./results/collectResults')
 const defaultRoute=require('./comps/default')
 const authJWTRoute=require('./jwt/authJWTRoute')
+const {authJWTLogout}=require('./jwt/authJWTLogout')
+const refreshTokenRoute=require('./jwt/refreshTokenRoute')
 const {authJWTMiddleware}=require('./jwt/authJWTMiddleware')
 const {middleware,authMiddleware}=require('./middleware/middleware')
 //cron jobs 
@@ -48,6 +50,8 @@ app.get('/sortByAge',sortByAgeRoute.route)
 app.get('/distinctStudents',distinctStudentsRoute.route)
 app.post('/addMarksheet',addMarksheetRoute.route)
 app.post('/login',authJWTRoute.route)
+app.post('/token',refreshTokenRoute.route)
+app.delete('/logout',authJWTLogout)
 // app.get('/getMarksheets',getMarksheets.route)
 
 app.listen(process.env.PORT,()=>{

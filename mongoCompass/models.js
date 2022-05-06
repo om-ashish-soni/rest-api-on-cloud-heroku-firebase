@@ -1,8 +1,10 @@
 const mongoose=require('mongoose')
-const {studentSchema,marksheetSchema,resultSchema} = require('../mongoCompass/schema');
+const {studentSchema,marksheetSchema,resultSchema,tokenSchema} = require('../mongoCompass/schema');
 const Student=new mongoose.model('Student',studentSchema);
 const Marksheet=new mongoose.model('Marksheet',marksheetSchema);
 const Result=new mongoose.model('Result',resultSchema);
+const Token=new mongoose.model('Token',tokenSchema);
 exports.Student=Student;
 exports.Marksheet=Marksheet;
 exports.Result=Result;
+exports.Token=Token;
