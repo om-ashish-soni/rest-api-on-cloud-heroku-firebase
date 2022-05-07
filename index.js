@@ -21,6 +21,7 @@ const defaultRoute=require('./comps/default')
 const authJWTRoute=require('./jwt/authJWTRoute')
 const {authJWTLogout}=require('./jwt/authJWTLogout')
 const refreshTokenRoute=require('./jwt/refreshTokenRoute')
+const datetimeRoute=require('./luxon/datetimeRoute')
 const {authJWTMiddleware}=require('./jwt/authJWTMiddleware')
 const {middleware,authMiddleware}=require('./middleware/middleware')
 //cron jobs 
@@ -52,6 +53,7 @@ app.post('/addMarksheet',addMarksheetRoute.route)
 app.post('/login',authJWTRoute.route)
 app.post('/token',refreshTokenRoute.route)
 app.delete('/logout',authJWTLogout)
+app.post('/datetime',datetimeRoute.route)
 // app.get('/getMarksheets',getMarksheets.route)
 
 app.listen(process.env.PORT,()=>{
